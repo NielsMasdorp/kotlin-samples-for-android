@@ -360,7 +360,7 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
         }
     }
 
-    public class RefreshHandler(): Handler() {
+    public inner class RefreshHandler(): Handler() {
 
         override fun handleMessage(val msg: Message?) {
             this@SnakeView.update()
