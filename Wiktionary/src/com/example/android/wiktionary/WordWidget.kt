@@ -42,7 +42,7 @@ class UpdateService() : Service() {
         return null
     }
 
-    public fun buildUpdate(val context: Context): RemoteViews {
+    public fun buildUpdate(context: Context): RemoteViews {
         // Pick out month names from resources
         val res = context.getResources()
         val monthNames = res?.getStringArray(R.array.month_names)

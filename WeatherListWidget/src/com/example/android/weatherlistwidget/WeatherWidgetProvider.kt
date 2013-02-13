@@ -94,7 +94,7 @@ public class WeatherWidgetProvider(): AppWidgetProvider() {
             }
         super.onReceive(ctx, intent)
     }
-    public override fun onUpdate(context: Context?, appWidgetManager: AppWidgetManager?, val appWidgetIds: IntArray?): Unit {
+    public override fun onUpdate(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetIds: IntArray?): Unit {
         if (appWidgetIds == null) {
             return
         }

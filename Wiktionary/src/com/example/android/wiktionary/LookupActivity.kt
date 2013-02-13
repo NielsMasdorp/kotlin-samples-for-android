@@ -101,7 +101,7 @@ class LookupActivity(): Activity(), AnimationListener {
         return super<Activity>.onKeyDown(keyCode, event)
     }
 
-    fun startNavigating(word: String?, val pushHistory: Boolean) {
+    fun startNavigating(word: String?, pushHistory: Boolean) {
         if (!TextUtils.isEmpty(mEntryTitle) && pushHistory) {
             mHistory.add(mEntryTitle)
         }
@@ -168,7 +168,7 @@ class LookupActivity(): Activity(), AnimationListener {
         builder.show()
     }
 
-    fun displayText(val word: String?): String {
+    fun displayText(word: String?): String {
         val query: String = word ?: ExtendedWikiHelper().getRandomWord()
         println(query)
         val wikiText = ExtendedWikiHelper().getPageContent(query, true)

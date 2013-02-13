@@ -13,7 +13,7 @@ class FormatRule(var pattern: String, var mReplaceWith: String, var flags: Int =
     * Apply this formatting rule to the given input string, and return the
     * resulting new string.
     */
-    public fun apply(val input: String): String {
+    public fun apply(input: String): String {
         val m = mPattern.matcher(input)
         return m.replaceAll(mReplaceWith)
     }

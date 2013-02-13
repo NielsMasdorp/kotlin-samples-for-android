@@ -182,7 +182,7 @@ class ExtendedWikiHelper(): SimpleWikiHelper() {
     * @param wikiText The raw text to format, with wiki-markup included.
     * @return HTML formatted content, ready for display in {@link WebView}.
     */
-    public fun formatWikiText(val wikiText: String?): String? {
+    public fun formatWikiText(wikiText: String?): String? {
         if (wikiText == null) {
             return null
         }

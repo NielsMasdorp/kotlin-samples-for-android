@@ -60,10 +60,10 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
         mScore = 0
     }
 
-    fun coordArrayListToArray(val coordinatesArrayList: ArrayList<Coordinate>): IntArray? {
+    fun coordArrayListToArray(coordinatesArrayList: ArrayList<Coordinate>): IntArray? {
         var count = coordinatesArrayList.size() - 1
         val coordinatesArray = IntArray(count * 2)
-        for (var index in 0..count) {
+        for (index in 0..count) {
             val c: Coordinate = coordinatesArrayList.get(index)
             coordinatesArray[2 * index] = c.x
             coordinatesArray[2 * index + 1] = c.y
@@ -84,19 +84,18 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
         return map
     }
 
-    fun coordArrayToArrayList(val coordinatesArray: IntArray): ArrayList<Coordinate> {
+    fun coordArrayToArrayList(coordinatesArray: IntArray): ArrayList<Coordinate> {
         val coordinatesArrayList = ArrayList<Coordinate>()
 
         val count = coordinatesArray.size
-        for (var index in 0..count) {
-            val  c = Coordinate(coordinatesArray[index]!!, coordinatesArray[index + 1]!!)
+        for (index in 0..count step 2) {
+            val c = Coordinate(coordinatesArray[index]!!, coordinatesArray[index + 1]!!)
             coordinatesArrayList.add(c)
-            index += 2
         }
         return coordinatesArrayList
     }
 
-    public fun restoreState(val icicle: Bundle) {
+    public fun restoreState(icicle: Bundle) {
         setMode(PAUSE)
 
         mAppleList = coordArrayToArrayList(icicle.getIntArray("mAppleList")!!)
@@ -107,7 +106,7 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
         mSnakeTrail = coordArrayToArrayList(icicle.getIntArray("mSnakeTrail")!!)
     }
 
-    public override fun onKeyDown(val keyCode: Int, msg: KeyEvent?): Boolean {
+    public override fun onKeyDown(keyCode: Int, msg: KeyEvent?): Boolean {
 
         when(keyCode) {
             KeyEvent.KEYCODE_DPAD_UP -> {
@@ -133,11 +132,11 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
         return super<TileView>.onKeyDown(keyCode, msg)
     }
 
-    public fun setTextView(val newView: TextView) {
+    public fun setTextView(newView: TextView) {
         mStatusText = newView
     }
 
-    public fun setDirection(val direction: String) {
+    public fun setDirection(direction: String) {
         when (direction) {
             "UP" -> {
                 if (mDirection != SOUTH) {
@@ -165,7 +164,7 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
         }
     }
 
-    fun setBackgroundImage(val draw: Int) {
+    fun setBackgroundImage(draw: Int) {
         val resources = myContext.getResources()
         this.setBackgroundDrawable(resources?.getDrawable(draw))
     }
@@ -183,7 +182,7 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
         }
     }
 
-    public fun setMode(val newMode: Int) {
+    public fun setMode(newMode: Int) {
         val oldMode = mMode
         mMode = newMode
 
@@ -225,7 +224,7 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
             // Make sure it's not already under the snake
             var collision = false
             val snakelength = mSnakeTrail.size() - 1
-            for (var index in 0..snakelength) {
+            for (index in 0..snakelength) {
                 if (mSnakeTrail.get(index).equals(newCoord)) {
                     collision = true
                 }
@@ -253,11 +252,11 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
     }
 
     fun updateWalls() {
-        for (var x in 0..mXTileCount - 1) {
+        for (x in 0..mXTileCount - 1) {
             setTile(GREEN_STAR, x, 0)
             setTile(GREEN_STAR, x, mYTileCount - 1)
         }
-        for (var y in 1..mYTileCount - 1) {
+        for (y in 1..mYTileCount - 1) {
             setTile(GREEN_STAR, 0, y)
             setTile(GREEN_STAR, mXTileCount - 1, y)
         }
@@ -303,7 +302,7 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
         }
 
         val snakelength = mSnakeTrail.size() - 1
-        for (var snakeindex in 0..snakelength) {
+        for (snakeindex in 0..snakelength) {
             val c = mSnakeTrail.get(snakeindex)
             if (c.equals(newHead)) {
                 setMode(LOSE)
@@ -313,7 +312,7 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
 
         // Look for apples
         val applecount = mAppleList.size() - 1
-        for (var appleindex in  0..applecount) {
+        for (appleindex in  0..applecount) {
             val c = mAppleList.get(appleindex)
             if (c.equals(newHead)) {
                 mAppleList.remove(c)
@@ -348,7 +347,7 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
 
     class Coordinate(val x: Int, val y: Int) {
 
-        public fun equals(val other: Coordinate): Boolean {
+        public fun equals(other: Coordinate): Boolean {
             if (x == other.x && y == other.y) {
                 return true
             }
@@ -362,12 +361,12 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
 
     public inner class RefreshHandler(): Handler() {
 
-        override fun handleMessage(val msg: Message?) {
+        override fun handleMessage(msg: Message?) {
             this@SnakeView.update()
             this@SnakeView.invalidate()
         }
 
-        public fun sleep(val delayMillis: Long) {
+        public fun sleep(delayMillis: Long) {
             sendMessageDelayed(obtainMessage(0), delayMillis)
         }
     }

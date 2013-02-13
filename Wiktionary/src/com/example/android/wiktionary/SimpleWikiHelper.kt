@@ -33,7 +33,7 @@ open class SimpleWikiHelper {
 
     var sUserAgent : String? = null
 
-    public fun prepareUserAgent(val context : Context) {
+    public fun prepareUserAgent(context : Context) {
         try {
             // Read package name and version number from manifest
             val manager = context.getPackageManager()
@@ -46,7 +46,7 @@ open class SimpleWikiHelper {
         }
     }
 
-    public fun getPageContent(val title : String, val expandTemplates : Boolean) : String? {
+    public fun getPageContent(title : String, expandTemplates : Boolean) : String? {
         // Encode page title and expand templates if requested
         val encodedTitle = Uri.encode(title)
         val expandClause = if (expandTemplates) WIKTIONARY_EXPAND_TEMPLATES else ""
@@ -78,7 +78,7 @@ open class SimpleWikiHelper {
     * @return The raw content returned by the server.
     * @throws ApiException If any connection or server error occurs.
     */
-    public fun getUrlContent(val url : String) : String? {
+    public fun getUrlContent(url : String) : String? {
         // Create client and set our specific user-agent string
         val  client = DefaultHttpClient()
         val request = HttpGet(url)
