@@ -5,7 +5,7 @@
       <configuration />
     </facet>
   </component>
-  <component name="NewModuleRootManager" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
     <output url="file://$MODULE_DIR$/../out/production/Snake" />
     <output-test url="file://$MODULE_DIR$/../out/test/Snake" />
     <content url="file://$MODULE_DIR$">
