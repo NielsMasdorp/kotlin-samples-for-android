@@ -346,15 +346,11 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
     }
 
     class Coordinate(val x: Int, val y: Int) {
-
-        public fun equals(other: Coordinate): Boolean {
-            if (x == other.x && y == other.y) {
-                return true
-            }
-            return false
+        override fun equals(other: Any?): Boolean {
+            return other is Coordinate && x == other.x && y == other.y
         }
 
-        public fun toString(): String {
+        override fun toString(): String {
             return "Coordinate: [" + x + "," + y + "]"
         }
     }
