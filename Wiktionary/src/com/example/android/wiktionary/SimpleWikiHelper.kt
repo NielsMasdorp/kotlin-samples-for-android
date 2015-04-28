@@ -15,7 +15,7 @@ import android.util.Log
 
 open class SimpleWikiHelper {
 
-    class object {
+    companion object {
         var instance = SimpleWikiHelper()
     }
 
