@@ -20,7 +20,7 @@ import android.graphics.drawable.Drawable
 
 public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileView(myContext, myAttrs)  {
 
-    {
+    init {
         initSnakeView()
     }
 

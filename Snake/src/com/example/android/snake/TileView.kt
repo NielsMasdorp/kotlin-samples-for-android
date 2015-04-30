@@ -19,7 +19,7 @@ open class TileView(context: Context, attrs: AttributeSet): View(context, attrs)
 
     private var mTileSize: Int = 1
 
-    {
+    init {
         val a = context.obtainStyledAttributes(attrs, R.styleable.TileView)!!
         mTileSize = a.getInt(R.styleable.TileView_tileSize, 12)
         a.recycle()
