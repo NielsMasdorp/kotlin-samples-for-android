@@ -51,7 +51,7 @@ public class WeatherWidgetProvider(): AppWidgetProvider() {
         val r: ContentResolver = context?.getContentResolver()!!
         if (sDataObserver == null) {
             val mgr: AppWidgetManager = AppWidgetManager.getInstance(context)!!
-            val cn: ComponentName = ComponentName(context, javaClass<WeatherWidgetProvider>())
+            val cn: ComponentName = ComponentName(context, WeatherWidgetProvider::class.java)
             sDataObserver = WeatherDataProviderObserver(mgr, cn, sWorkerQueue)
             r.registerContentObserver(CONTENT_URI, true, sDataObserver)
         }
@@ -80,7 +80,7 @@ public class WeatherWidgetProvider(): AppWidgetProvider() {
                     }
                     r.registerContentObserver(CONTENT_URI, true, sDataObserver)
                     val mgr = AppWidgetManager.getInstance(context)!!
-                    val cn = ComponentName(context, javaClass<WeatherWidgetProvider>())
+                    val cn = ComponentName(context, WeatherWidgetProvider::class.java)
                     mgr.notifyAppWidgetViewDataChanged(mgr.getAppWidgetIds(cn), R.id.weather_list)
                 }
             })
@@ -99,7 +99,7 @@ public class WeatherWidgetProvider(): AppWidgetProvider() {
             return
         }
         for (i in 0..appWidgetIds.lastIndex) {
-            val intent = Intent(context, javaClass<WeatherWidgetService>())
+            val intent = Intent(context, WeatherWidgetService::class.java)
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds[i])
             intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)))
 
@@ -107,7 +107,7 @@ public class WeatherWidgetProvider(): AppWidgetProvider() {
             rv.setRemoteAdapter(appWidgetIds[i], R.id.weather_list, intent)
             rv.setEmptyView(R.id.weather_list, R.id.empty_view)
 
-            val onClickIntent = Intent(context, javaClass<WeatherWidgetProvider>())
+            val onClickIntent = Intent(context, WeatherWidgetProvider::class.java)
             onClickIntent.setAction(CLICK_ACTION)
             onClickIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds[i])
             onClickIntent.setData(Uri.parse(onClickIntent.toUri(Intent.URI_INTENT_SCHEME)))
@@ -115,7 +115,7 @@ public class WeatherWidgetProvider(): AppWidgetProvider() {
             val onClickPendingIntent = PendingIntent.getBroadcast(context, 0, onClickIntent, PendingIntent.FLAG_UPDATE_CURRENT)
             rv.setPendingIntentTemplate(R.id.weather_list, onClickPendingIntent)
 
-            val refreshIntent = Intent(context, javaClass<WeatherWidgetProvider>())
+            val refreshIntent = Intent(context, WeatherWidgetProvider::class.java)
             refreshIntent.setAction(REFRESH_ACTION)
 
             val refreshPendingIntent = PendingIntent.getBroadcast(context, 0, refreshIntent, PendingIntent.FLAG_UPDATE_CURRENT)
