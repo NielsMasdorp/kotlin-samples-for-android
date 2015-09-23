@@ -26,8 +26,8 @@ open class TileView(context: Context, attrs: AttributeSet): View(context, attrs)
     }
 
 
-    private var mTileArray: Array<Bitmap?> = Array<Bitmap?>(0) {null}
-    private var mTileGrid: MutableList<MutableList<Int>> = ArrayList<MutableList<Int>>()
+    private var mTileArray: Array<Bitmap?> = emptyArray()
+    private var mTileGrid: MutableList<MutableList<Int>> = ArrayList()
     private val mPaint: Paint = Paint()
 
     var mXTileCount: Int = 0
@@ -49,7 +49,7 @@ open class TileView(context: Context, attrs: AttributeSet): View(context, attrs)
         mXOffset = ((w - (mTileSize * mXTileCount)) / 2)
         mYOffset = ((h - (mTileSize * mYTileCount)) / 2)
         for (i in 0..mXTileCount) {
-            val innerArray: MutableList<Int> = ArrayList<Int>()
+            val innerArray: MutableList<Int> = ArrayList()
             for (j in 0..mYTileCount) {
                 innerArray.add(0)
             }
@@ -77,7 +77,7 @@ open class TileView(context: Context, attrs: AttributeSet): View(context, attrs)
         if (mTileGrid.size() > x && mTileGrid.get(x).size() > y) {
             mTileGrid.get(x).set(y, tileindex)
         } else {
-            println("INDEX OUT OF BOUND " + x + " " + y + " " + tileindex)
+            println("INDEX OUT OF BOUND $x $y $tileindex")
         }
     }
     public override fun onDraw(canvas: Canvas?): Unit {

@@ -33,7 +33,7 @@ public var mLastMove : Long = 0
 
 public var mStatusText : TextView? = null
 
-public var mSnakeTrail : ArrayList<Coordinate> = ArrayList<Coordinate>()
-public var mAppleList : ArrayList<Coordinate> = ArrayList<Coordinate>()
+public var mSnakeTrail : ArrayList<Coordinate> = ArrayList()
+public var mAppleList : ArrayList<Coordinate> = ArrayList()
 
 public val RNG : Random = Random()

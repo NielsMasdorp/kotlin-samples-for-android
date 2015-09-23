@@ -89,7 +89,7 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
 
         val count = coordinatesArray.size()
         for (index in 0..count step 2) {
-            val c = Coordinate(coordinatesArray[index]!!, coordinatesArray[index + 1]!!)
+            val c = Coordinate(coordinatesArray[index], coordinatesArray[index + 1])
             coordinatesArrayList.add(c)
         }
         return coordinatesArrayList
@@ -351,7 +351,7 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
         }
 
         override fun toString(): String {
-            return "Coordinate: [" + x + "," + y + "]"
+            return "Coordinate: [$x,$y]"
         }
     }
 
