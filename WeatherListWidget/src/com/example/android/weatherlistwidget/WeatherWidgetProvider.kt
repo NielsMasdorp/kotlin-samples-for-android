@@ -98,7 +98,7 @@ public class WeatherWidgetProvider(): AppWidgetProvider() {
         if (appWidgetIds == null) {
             return
         }
-        for (i in 0..appWidgetIds.size - 1) {
+        for (i in 0..appWidgetIds.lastIndex) {
             val intent = Intent(context, javaClass<WeatherWidgetService>())
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds[i])
             intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)))

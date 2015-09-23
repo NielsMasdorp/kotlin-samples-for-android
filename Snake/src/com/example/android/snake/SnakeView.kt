@@ -87,7 +87,7 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
     fun coordArrayToArrayList(coordinatesArray: IntArray): ArrayList<Coordinate> {
         val coordinatesArrayList = ArrayList<Coordinate>()
 
-        val count = coordinatesArray.size
+        val count = coordinatesArray.size()
         for (index in 0..count step 2) {
             val c = Coordinate(coordinatesArray[index]!!, coordinatesArray[index + 1]!!)
             coordinatesArrayList.add(c)

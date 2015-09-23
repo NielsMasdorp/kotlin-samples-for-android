@@ -46,10 +46,10 @@ public open class WeatherDataProvider(): ContentProvider() {
     public override fun query(uri: Uri?, projection: Array<out String>?, selection: String?, selectionArgs: Array<out String>?, sortOrder: String?): Cursor? {
         println(uri.toString())
         assert {(uri?.getPathSegments()?.isEmpty()!!)}
-        val c = MatrixCursor(array<String>(COLUMNS.ID, COLUMNS.CITY, COLUMNS.TEMPERATURE))
+        val c = MatrixCursor(arrayOf(COLUMNS.ID, COLUMNS.CITY, COLUMNS.TEMPERATURE))
         for (i in 0..sData.size() - 1) {
             val data = sData.get(i)
-            c.addRow(array<Any>(Integer(i), data.city, Integer((data.degrees))))
+            c.addRow(arrayOf<Any>(Integer(i), data.city, Integer((data.degrees))))
         }
         return c
     }
@@ -68,7 +68,7 @@ public open class WeatherDataProvider(): ContentProvider() {
         }
         assert {((uri.getPathSegments()?.size())!! == 1)}
         val index = Integer.parseInt((uri.getPathSegments()?.get(0))!!)
-        val c = MatrixCursor(array<String>(COLUMNS.ID, COLUMNS.CITY, COLUMNS.TEMPERATURE))
+        val c = MatrixCursor(arrayOf(COLUMNS.ID, COLUMNS.CITY, COLUMNS.TEMPERATURE))
         assert {(0 <= index && index < (sData.size()))}
         var data = sData.get(index)
         data.setDegree(values?.getAsInteger(COLUMNS.TEMPERATURE)!!)
