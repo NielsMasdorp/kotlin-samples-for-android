@@ -4,18 +4,8 @@ import java.util.regex.Pattern
 import java.util.ArrayList
 import org.json.JSONObject
 import org.json.JSONException
-import java.text.ParseException
 import java.util.HashSet
 import android.text.TextUtils
-import org.apache.http.impl.client.DefaultHttpClient
-import org.apache.http.client.methods.HttpGet
-import org.apache.http.HttpResponse
-import org.apache.http.StatusLine
-import com.example.android.wiktionary.SimpleWikiHelper
-import java.io.ByteArrayOutputStream
-import java.io.IOException
-import java.text.Format
-import kotlin.dom.get
 import android.util.Log
 
 /**
