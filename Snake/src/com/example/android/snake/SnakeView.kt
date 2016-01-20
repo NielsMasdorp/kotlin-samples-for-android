@@ -61,7 +61,7 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
     }
 
     fun coordArrayListToArray(coordinatesArrayList: ArrayList<Coordinate>): IntArray? {
-        var count = coordinatesArrayList.size() - 1
+        var count = coordinatesArrayList.size - 1
         val coordinatesArray = IntArray(count * 2)
         for (index in 0..count) {
             val c: Coordinate = coordinatesArrayList.get(index)
@@ -87,7 +87,7 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
     fun coordArrayToArrayList(coordinatesArray: IntArray): ArrayList<Coordinate> {
         val coordinatesArrayList = ArrayList<Coordinate>()
 
-        val count = coordinatesArray.size()
+        val count = coordinatesArray.size
         for (index in 0..count step 2) {
             val c = Coordinate(coordinatesArray[index], coordinatesArray[index + 1])
             coordinatesArrayList.add(c)
@@ -223,7 +223,7 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
 
             // Make sure it's not already under the snake
             var collision = false
-            val snakelength = mSnakeTrail.size() - 1
+            val snakelength = mSnakeTrail.size - 1
             for (index in 0..snakelength) {
                 if (mSnakeTrail.get(index).equals(newCoord)) {
                     collision = true
@@ -301,7 +301,7 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
             return
         }
 
-        val snakelength = mSnakeTrail.size() - 1
+        val snakelength = mSnakeTrail.size - 1
         for (snakeindex in 0..snakelength) {
             val c = mSnakeTrail.get(snakeindex)
             if (c.equals(newHead)) {
@@ -311,7 +311,7 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
         }
 
         // Look for apples
-        val applecount = mAppleList.size() - 1
+        val applecount = mAppleList.size - 1
         for (appleindex in  0..applecount) {
             val c = mAppleList.get(appleindex)
             if (c.equals(newHead)) {
@@ -330,7 +330,7 @@ public class SnakeView(val myContext: Context, val myAttrs: AttributeSet): TileV
         mSnakeTrail.add(0, newHead)
         // except if we want the snake to grow
         if (!growSnake) {
-            mSnakeTrail.remove(mSnakeTrail.size() - 1)
+            mSnakeTrail.removeAt(mSnakeTrail.size - 1)
         }
 
         var index = 0

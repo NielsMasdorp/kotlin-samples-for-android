@@ -74,7 +74,7 @@ open class TileView(context: Context, attrs: AttributeSet): View(context, attrs)
         }
     }
     public open fun setTile(tileindex: Int, x: Int, y: Int): Unit {
-        if (mTileGrid.size() > x && mTileGrid.get(x).size() > y) {
+        if (mTileGrid.size > x && mTileGrid.get(x).size > y) {
             mTileGrid.get(x).set(y, tileindex)
         } else {
             println("INDEX OUT OF BOUND $x $y $tileindex")
