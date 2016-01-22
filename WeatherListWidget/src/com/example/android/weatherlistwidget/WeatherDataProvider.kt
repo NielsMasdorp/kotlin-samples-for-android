@@ -47,8 +47,8 @@ public open class WeatherDataProvider(): ContentProvider() {
         println(uri.toString())
         assert {(uri?.getPathSegments()?.isEmpty()!!)}
         val c = MatrixCursor(arrayOf(COLUMNS.ID, COLUMNS.CITY, COLUMNS.TEMPERATURE))
-        for (i in 0..sData.size() - 1) {
-            val data = sData.get(i)
+        for (i in 0..sData.size - 1) {
+            val data = sData[i]
             c.addRow(arrayOf<Any>(Integer(i), data.city, Integer((data.degrees))))
         }
         return c
@@ -66,10 +66,10 @@ public open class WeatherDataProvider(): ContentProvider() {
         if (uri == null) {
             throw RuntimeException()
         }
-        assert {((uri.getPathSegments()?.size())!! == 1)}
+        assert {((uri.getPathSegments()?.size)!! == 1)}
         val index = Integer.parseInt((uri.getPathSegments()?.get(0))!!)
         val c = MatrixCursor(arrayOf(COLUMNS.ID, COLUMNS.CITY, COLUMNS.TEMPERATURE))
-        assert {(0 <= index && index < (sData.size()))}
+        assert {(0 <= index && index < (sData.size))}
         var data = sData.get(index)
         data.setDegree(values?.getAsInteger(COLUMNS.TEMPERATURE)!!)
         getContext()?.getContentResolver()?.notifyChange(uri, null)

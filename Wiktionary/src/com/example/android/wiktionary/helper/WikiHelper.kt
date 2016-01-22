@@ -196,7 +196,7 @@ class ExtendedWikiHelper(): SimpleWikiHelper() {
         }
 
         // Our new wiki text is the selected sections only
-        wikiTextInternal = if (builder.length() > 0) builder.toString() else ""
+        wikiTextInternal = if (builder.length > 0) builder.toString() else ""
 
         // Apply all formatting rules, in order, to the wiki text
         for (rule in sFormatRules) {
